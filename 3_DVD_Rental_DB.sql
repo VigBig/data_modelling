@@ -28,18 +28,3 @@ JOIN city c2 ON a.city_id= c2.city_id
 JOIN country c1 ON c2.country_id= c1.country_id
 GROUP BY c2.city, c1.country
 ORDER BY revenue desc;
-
--- Query to verify if each city is unique
--- Count of cities
-SELECT c2.city , count(city) as no_of_cities from city as c2
-GROUP BY c2.city
-ORDER BY no_of_cities desc;
--- Here we see that there are 2 'London'
-
--- Count of cities by country
-SELECT c1.country, c2.city , count(city) as no_of_cities from city as c2
-JOIN country c1 ON c2.country_id= c1.country_id
-WHERE c2.city = 'London'
-GROUP BY c2.city, c1.country
-ORDER BY no_of_cities desc;
--- There is a 'London' in UK and in Canada
